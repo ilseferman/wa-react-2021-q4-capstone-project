@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Header from './UI/Header';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('Ecommerce Store logo/name appears correctly in the Header.', () => {
+  render(<Header />);
+  const brandName = screen.getByText(/Brand/i);
+  expect(brandName).toBeInTheDocument();
 });

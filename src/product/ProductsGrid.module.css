@@ -1,0 +1,27 @@
+.products {
+  text-align: center;
+  margin-bottom: 4vh;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media only screen and (min-width: 1370px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}

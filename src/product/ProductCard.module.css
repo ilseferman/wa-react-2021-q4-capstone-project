@@ -1,0 +1,32 @@
+.productCard {
+  color: #212529;
+  background-color: #fff;
+  margin: 1vw 1vw;
+  padding: 4ex 4ex 0.5ex 4ex;
+  border-radius: 4ex;
+  cursor: pointer;
+  box-shadow: 0 10px 18px rgba(109, 104, 117, 0.4);
+}
+
+.productCard img {
+  width: 10vw;
+  text-align: center;
+  margin-top: 2vh;
+}
+
+.productCard h3,
+.productCard p {
+  text-align: left;
+}
+
+@media only screen and (max-width: 768px) {
+  .productCard img {
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .productCard img {
+    width: 40vw;
+  }
+}

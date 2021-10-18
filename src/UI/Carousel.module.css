@@ -1,0 +1,43 @@
+.carousel {
+  text-align: center;
+  background-color: #dee2e6;
+  padding-top: 1ex;
+  margin: 3rem 0;
+}
+
+.scroller {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  padding-inline: 5px;
+  scroll-padding-inline: 5px;
+}
+
+.carousel li {
+  display: inline-block;
+}
+
+.carousel figure {
+  width: 20vw;
+  cursor: pointer;
+  margin: 2ex;
+}
+
+.carousel picture {
+  inline-size: 150px;
+  block-size: 150px;
+}
+
+.carousel img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  border-radius: 1ex;
+  box-shadow: 0 7px 14px rgba(109, 104, 117, 0.4);
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel figure {
+    width: 40vw;
+  }
+}

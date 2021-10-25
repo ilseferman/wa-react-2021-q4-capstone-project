@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import styles from './App.module.css';
 
 import Header from './UI/Header/';
-import HomePage from './Home/HomePage';
-import ProductList from './Product/ProductList';
+import HomePage from './home/HomePage';
+import ProductList from './product/ProductList';
 import Footer from './UI/Footer/';
 
 function App() {

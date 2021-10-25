@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './App.module.css';
-import HomePage from './home/HomePage';
-import Footer from './UI/Footer';
-import Header from './UI/Header';
+
+import Header from './UI/Header/';
+import HomePage from './Home/HomePage';
+import ProductList from './Product/ProductList';
+import Footer from './UI/Footer/';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('HomePage');
+  const handleChangePage = (page) => setCurrentPage(page);
+
   return (
     <>
       <div className={styles.container}>
-        <Header />
+        <Header onPageChange={handleChangePage} />
         <main>
-          <HomePage />
+          {currentPage === 'HomePage' && (
+            <HomePage onPageChange={handleChangePage} />
+          )}
+          {currentPage === 'ProductList' && <ProductList />}
         </main>
         <Footer />
       </div>

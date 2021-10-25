@@ -1,9 +1,10 @@
-import styles from './Footer.module.css';
+import { StyledFooter } from './styles';
+
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <StyledFooter>
       <p>Ecommerce created during Wizeline’s Academy React Bootcamp</p>
-    </footer>
+    </StyledFooter>
   );
 }
 

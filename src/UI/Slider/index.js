@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Slider.module.css';
+import { SliderList, DotsWrapper, SliderItem, Dot } from './styles';
 
 function Slider({ items }) {
   const [activeSlider, setActiveSlider] = useState(0);
@@ -22,31 +22,24 @@ function Slider({ items }) {
   return (
     <>
       {/* list of images */}
-      <div className={styles.slider}>
+      <SliderList>
         {items.map(({ id, data }) => (
-          <div
-            className={`${
-              id === items[activeSlider].id ? styles.itemActive : styles.item
-            } ${styles.sliderEffect}`}
-            key={id}
-          >
+          <SliderItem isActive={id === items[activeSlider].id} key={id}>
             <img src={data.main_image.url} alt={data.main_image.alt} />
-          </div>
+          </SliderItem>
         ))}
-      </div>
+      </SliderList>
 
       {/* dots menu */}
-      <div className={styles.dots}>
+      <DotsWrapper>
         {items.map(({ id }) => (
-          <span
+          <Dot
             onClick={() => handleDotClick(id)}
-            className={`${id === items[activeSlider].id && styles.active} ${
-              styles.dot
-            }`}
+            isActive={id === items[activeSlider].id}
             key={id}
-          ></span>
+          ></Dot>
         ))}
-      </div>
+      </DotsWrapper>
     </>
   );
 }

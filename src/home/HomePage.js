@@ -2,11 +2,13 @@ import React from 'react';
 import { mockBanners } from '../mocks/featured-banners';
 import { mockCategories } from '../mocks/product-categories';
 import { mockProducts } from '../mocks/featured-products';
-import Carousel from '../UI/Carousel';
+import ProductCategories from '../Product/ProductCategories';
 import Slider from '../UI/Slider';
-import ProductsGrid from '../product/ProductsGrid';
 
-function HomePage() {
+import ProductsGrid from '../Product/ProductsGrid';
+import { Button } from '../UI/Button';
+
+function HomePage({ onPageChange }) {
   const banners = mockBanners.results;
   const categories = mockCategories.results;
   const products = mockProducts.results;
@@ -14,8 +16,11 @@ function HomePage() {
   return (
     <>
       <Slider items={banners} />
-      <Carousel items={categories} />
+      <ProductCategories items={categories} />
       <ProductsGrid items={products} />
+      <Button onClick={() => onPageChange('ProductList')}>
+        View all products
+      </Button>
     </>
   );
 }

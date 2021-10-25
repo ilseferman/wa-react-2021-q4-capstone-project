@@ -205,10 +205,10 @@ export const mockProducts = {
         name: 'Tyler Poly Reclining Leather Armchair',
         sku: '1066982170',
         category: {
-          id: 'YWHviRIAACsAyjP3',
+          id: 'YWHxkhIAAC4Ayj0J',
           type: 'category',
           tags: [],
-          slug: 'furniture',
+          slug: 'kitchen',
           lang: 'en-us',
           first_publication_date: '2021-10-09T23:34:39+0000',
           last_publication_date: '2021-10-12T23:30:58+0000',

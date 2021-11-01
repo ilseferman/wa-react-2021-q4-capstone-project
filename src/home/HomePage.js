@@ -2,10 +2,10 @@ import React from 'react';
 import { mockBanners } from '../mocks/featured-banners';
 import { mockCategories } from '../mocks/product-categories';
 import { mockProducts } from '../mocks/featured-products';
-import ProductCategories from '../Product/ProductCategories';
+import ProductCategories from '../product/ProductCategories';
 import Slider from '../UI/Slider';
 
-import ProductsGrid from '../Product/ProductsGrid';
+import ProductsGrid from '../product/ProductsGrid';
 import { Button } from '../UI/Button';
 
 function HomePage({ onPageChange }) {

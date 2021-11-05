@@ -1,20 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Slider, Button, Loading } from '../components/UI/';
 import { useAPI } from '../utils/hooks/useAPI';
 import ProductCategories from '../components/product/ProductCategories';
 import ProductsGrid from '../components/product/ProductsGrid';
-import { useAppContext } from '../utils/context';
+import useDocumentTitle from '../utils/hooks/useDocumentTitle';
 
 function Home() {
-  const { appContext, setAppContext } = useAppContext();
-
-  useEffect(() => {
-    setAppContext({
-      title: 'Home',
-    });
-    document.title = appContext.title;
-  }, [appContext.title, setAppContext]);
+  useDocumentTitle('Home');
 
   const { data: bannersData, isLoading: isLoadingBanners } = useAPI('banner', {
     pageSize: 5,

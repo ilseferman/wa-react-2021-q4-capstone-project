@@ -4,7 +4,7 @@ import { useLatestAPI } from './useLatestAPI';
 
 export function useAPI(
   documentType,
-  params = { pageSize: 10, page: 1, documentTags: [] }
+  params = { pageSize: 10, page: null, documentTags: [], searchTerm: null }
 ) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
 
@@ -20,12 +20,16 @@ export function useAPI(
   let tagsEncode = encodeURIComponent(
     `[[at(document.tags, ${JSON.stringify(params.documentTags)})]]`
   );
+  let searchEncode = encodeURIComponent(
+    `[[fulltext(document, "{${params.searchTerm}}")]]`
+  );
 
   const URL_SEARCH =
     documentType === 'product-detail'
       ? `&q=[[:d+=+at(document.id,+"${params.id}")+]]`
       : `${documentType && '&q=' + typeEncode}` +
         `${params.documentTags ? '&q=' + tagsEncode : ''}` +
+        `${params.searchTerm ? '&q=' + searchEncode : ''}` +
         `&lang=en-us&pageSize=${params.pageSize}` +
         `${params.page ? '&page=' + params.page : ''}`;
 

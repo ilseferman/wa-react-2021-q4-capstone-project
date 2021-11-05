@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, Logo } from './styles';
 
-function Header({ onPageChange }) {
+function Header({ children }) {
   return (
     <header>
       <Nav>
@@ -12,8 +12,9 @@ function Header({ onPageChange }) {
             <h3>Brand</h3>
           </Logo>
         </Link>
-
-        <input type="text" placeholder="Search..." />
+        
+        {children}
+        
         <button>
           <i className="fas fa-shopping-cart"></i>
         </button>

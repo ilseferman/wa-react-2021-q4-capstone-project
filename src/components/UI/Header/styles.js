@@ -12,22 +12,40 @@ const Nav = styled.nav`
   width: 100%;
   z-index: 2;
 
-  input {
-    border: none;
+  form {
     font-size: 1.1rem;
     padding: 0.6rem 1rem;
-    width: 80%;
+    width: 70%;
     margin: 0 1rem;
-    &:focus-visible {
-      box-shadow: none;
-      outline: none;
+    display: flex;
+    justify-content: center;
+
+    input {
+      border: none;
+      font-size: 1.1rem;
+      padding: 0.6rem 1rem;
+      float: left;
+      width: 90%;
+      &:focus-visible {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    button {
+      background-color: #fff;
+      border-left: 1px solid #e6e6e6;
+      color: #333;
+      float: left;
+      width: 1.3rem;
+      padding: 10px;
     }
   }
 
   button {
     all: unset;
     cursor: pointer;
-    width: 7%;
+    width: 10%;    
   }
 `;
 

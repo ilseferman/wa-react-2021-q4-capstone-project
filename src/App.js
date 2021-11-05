@@ -7,13 +7,17 @@ import ProductList from './pages/ProductList';
 import styles from './App.module.css';
 import ProductDetail from './pages/ProductDetail';
 import { AppProvider } from './utils/context';
+import SearchResults from './pages/SearchResults';
+import ProductSearch from './components/product/ProductSearch';
 
 function App() {
   return (
     <AppProvider>
       <Router>
         <div className={styles.container}>
-          <Header />
+          <Header>
+            <ProductSearch />
+          </Header>
           <main>
             <Switch>
               <Route path="/products">
@@ -24,6 +28,9 @@ function App() {
               </Route>
               <Route path="/product/:id">
                 <ProductDetail />
+              </Route>
+              <Route path="/search">
+                <SearchResults />
               </Route>
             </Switch>
           </main>

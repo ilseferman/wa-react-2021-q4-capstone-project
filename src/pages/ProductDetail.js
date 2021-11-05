@@ -4,23 +4,24 @@ import { Loading, Slider } from '../components/UI';
 import { Card } from '../components/UI/';
 import { Container, Sidebar, Content } from '../components/UI/Container';
 import { useAPI } from '../utils/hooks/useAPI';
-import { useAppContext } from '../utils/context';
+
 import ProductDetailCard from '../components/product/ProductDetailCard';
+import useDocumentTitle from '../utils/hooks/useDocumentTitle';
 
 function ProductDetail() {
+  useDocumentTitle('Home');
+
   const { id } = useParams();
   const [imagesSlider, setImagesSlider] = useState([]);
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const { data: productData, isLoading: isLoadingProduct } = useAPI(
     'product-detail',
     { id }
   );
-  const { appContext, setAppContext } = useAppContext();
 
   useEffect(() => {
     if (productData?.results?.[0]?.data) {
       setProduct(productData?.results?.[0]);
-
       setImagesSlider(
         productData?.results?.[0]?.data?.images.map(({ image }) => {
           const newObj = {
@@ -34,12 +35,9 @@ function ProductDetail() {
           return newObj;
         })
       );
-      setAppContext({
-        title: product.data?.name,
-      });
-      document.title = appContext.title;
+      
     }
-  }, [productData, isLoadingProduct, product, appContext.title, setAppContext]);
+  }, [productData, isLoadingProduct, product]);
 
   if (isLoadingProduct) return <Loading />;
 
@@ -48,7 +46,7 @@ function ProductDetail() {
       <Container columns="40% auto">
         <Sidebar>
           <Card>
-            <Slider product items={imagesSlider} />
+            <Slider product items={imagesSlider} autoSlide={false}/>
           </Card>
         </Sidebar>
         <Content>

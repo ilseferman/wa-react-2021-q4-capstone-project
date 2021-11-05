@@ -68,6 +68,12 @@ const StyledCard = styled.div`
     letter-spacing: 1px;
     padding: 1rem 0;
   }
+  .shortDesc {
+    font-size: 10px;
+    line-height: 1.2;
+    padding: 4px 0px;
+    
+  }
 
   input {
     border: 1 px solid rgba(0, 0, 0, 0.25);

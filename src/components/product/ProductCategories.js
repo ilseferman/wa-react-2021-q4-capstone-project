@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Section, Wrapper } from '../UI/';
+import PropTypes from 'prop-types';
 
 function ProductCategories({ items }) {
   return (
     <Section title="Categories">
       <Wrapper cols={5}>
-        {items?.map(({ id, data }) => (
+        {items?.map(({ id, data, slugs}) => (
           <Link
             to={{
               pathname: '/products',
-              search: `?category=${id}`,
+              search: `?category=${slugs[0]}`,
             }}
             key={id}
           >
@@ -23,6 +24,10 @@ function ProductCategories({ items }) {
       </Wrapper>
     </Section>
   );
+}
+
+ProductCategories.propTypes = {
+  items: PropTypes.array.isRequired,
 }
 
 export default ProductCategories;

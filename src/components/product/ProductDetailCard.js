@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button } from '../UI/';
+import PropTypes from 'prop-types';
 
 function ProductDetailCard({ product }) {
   return (
@@ -14,10 +15,13 @@ function ProductDetailCard({ product }) {
           <span key={tag}>{tag}</span>
         ))}
       </p>
-      <p className="description">{product?.data?.description[0].text}</p>
+      
       <label htmlFor="amount">Amount </label>
       <input id="amount" type="number" min="0" />
       <Button>Add to cart </Button>
+      
+      <p className="description">{product?.data?.description[0].text}</p>
+      
       <h4>Specs</h4>
       <table>
         <tbody>
@@ -31,6 +35,10 @@ function ProductDetailCard({ product }) {
       </table>
     </Card>
   );
+}
+
+ProductDetailCard.propTypes = {
+  product: PropTypes.object.isRequired,
 }
 
 export default ProductDetailCard;

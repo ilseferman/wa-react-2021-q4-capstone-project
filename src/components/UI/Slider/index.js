@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { SliderList, DotsWrapper, SliderItem, Dot } from './styles';
 
-function Slider({ items, product = false }) {
+function Slider({ items, product = false, autoSlide = true }) {
   const [activeSlider, setActiveSlider] = useState(0);
 
   // Effect to change slide automatically each 8 seconds
   useEffect(() => {
-    const id = setInterval(() => {
-      setActiveSlider((prevIndex) =>
-        prevIndex < items.length - 1 ? prevIndex + 1 : 0
-      );
-    }, 8000);
-    return () => clearInterval(id);
-  }, [activeSlider, items]);
+    if (autoSlide) {
+      const id = setInterval(() => {
+        setActiveSlider((prevIndex) =>
+          prevIndex < items.length - 1 ? prevIndex + 1 : 0
+        );
+      }, 8000);
+      return () => clearInterval(id);
+    }
+  }, [activeSlider, items, autoSlide]);
 
   // Change the current image on the slider, depending on which dot clicked the user
   const handleDotClick = (id) => {

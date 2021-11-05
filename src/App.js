@@ -1,29 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { Header, Footer } from './components/UI';
+import Home from './pages/Home';
+import ProductList from './pages/ProductList';
 import styles from './App.module.css';
-
-import Header from './UI/Header/';
-import HomePage from './home/HomePage';
-import ProductList from './product/ProductList';
-import Footer from './UI/Footer/';
+import ProductDetail from './pages/ProductDetail';
+import { AppProvider } from './utils/context';
+import SearchResults from './pages/SearchResults';
+import ProductSearch from './components/product/ProductSearch';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('HomePage');
-  const handleChangePage = (page) => setCurrentPage(page);
-
   return (
-    <>
-      <div className={styles.container}>
-        <Header onPageChange={handleChangePage} />
-        <main>
-          {currentPage === 'HomePage' && (
-            <HomePage onPageChange={handleChangePage} />
-          )}
-          {currentPage === 'ProductList' && <ProductList />}
-        </main>
-        <Footer />
-      </div>
-    </>
+    <AppProvider>
+      <Router>
+        <div className={styles.container}>
+          <Header>
+            <ProductSearch />
+          </Header>
+          <main>
+            <Switch>
+              <Route path="/products">
+                <ProductList />
+              </Route>
+              <Route exact path={['/', '/home']}>
+                <Home />
+              </Route>
+              <Route path="/product/:id">
+                <ProductDetail />
+              </Route>
+              <Route path="/search">
+                <SearchResults />
+              </Route>
+            </Switch>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AppProvider>
   );
 }
 

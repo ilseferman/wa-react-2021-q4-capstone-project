@@ -8,9 +8,13 @@ body {
   color: #333;
 }
 
+a {
+  all: unset;
+}
+
 .container {
   display: grid;
-  height: 100vh;
+  position: relative;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
@@ -21,27 +25,17 @@ body {
 
 header {
   grid-area: header;
-  height: 4.2rem;
 }
 
 main {
   grid-area: main;
-  overflow: auto;
   display: grid;
   grid-template-rows: 1fr;
-  margin-top: 0.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 4rem;
+  padding-top: 3.5rem;
+  height: calc(100% - 8rem);
 }
 
 footer {
   grid-area: footer;
-}
-
-@media (max-width: 1024px) {
-  main {
-    margin-top: 0;
-  }
-  header {
-    height: 3rem;
-  }
 }

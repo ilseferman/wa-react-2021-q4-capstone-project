@@ -19,4 +19,12 @@ export const Button = styled.button`
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
   }
+  &:disabled{
+  
+    background-color: #cccccc;
+    color: #666666;
+    &:hover {
+      box-shadow: none;
+    }
+  }
 `;

@@ -4,20 +4,20 @@ import { Loading, Slider } from '../components/UI';
 import { Card } from '../components/UI/';
 import { Container, Sidebar, Content } from '../components/UI/Container';
 import { useAPI } from '../utils/hooks/useAPI';
-
 import ProductDetailCard from '../components/product/ProductDetailCard';
 import useDocumentTitle from '../utils/hooks/useDocumentTitle';
 
 function ProductDetail() {
+  
   useDocumentTitle('Home');
 
   const { id } = useParams();
   const [imagesSlider, setImagesSlider] = useState([]);
-  const [product, setProduct] = useState({});
-  const { data: productData, isLoading: isLoadingProduct } = useAPI(
-    'product-detail',
-    { id }
-  );
+  const [product, setProduct] = useState({});  
+  const { 
+    data: productData, 
+    isLoading: isLoadingProduct 
+  } = useAPI('product-detail', { id });
 
   useEffect(() => {
     if (productData?.results?.[0]?.data) {
@@ -39,7 +39,7 @@ function ProductDetail() {
     }
   }, [productData, isLoadingProduct, product]);
 
-  if (isLoadingProduct) return <Loading />;
+  if (isLoadingProduct || !product.data) return <Loading />;
 
   return (
     <>

@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
   font-family: 'Montserrat', sans-serif;
   background-color: #ebebeb;
   color: #333;
@@ -13,8 +12,9 @@ a {
 }
 
 .container {
-  display: grid;
-  position: relative;
+  min-height: 100vh;
+  flex-direction: column;
+  display: grid;  
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
@@ -24,6 +24,7 @@ a {
 }
 
 header {
+  display: block;
   grid-area: header;
 }
 
@@ -31,11 +32,11 @@ main {
   grid-area: main;
   display: grid;
   grid-template-rows: 1fr;
-  padding-bottom: 4rem;
   padding-top: 3.5rem;
-  height: calc(100% - 8rem);
+  padding-bottom: 2rem;
 }
 
 footer {
+  display: block;
   grid-area: footer;
 }

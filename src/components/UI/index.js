@@ -1,30 +1,16 @@
-import Card from './Card/';
-import  Footer  from './Footer';
-import  Header  from './Header';
-import  Loading  from './Loading';
-import  Pagination  from './Pagination';
-import  Section  from './Section';
-import  Slider  from './Slider';
-import  Title  from './Title';
-import  Wrapper  from './Wrapper';
-import  { Button }  from './Button';
-import  { Container }  from './Container';
-import  { Flex }  from './Flex';
-import  { List }  from './List';
-
-export  {
-  Button,
-  Card,
-  Container,
-  Footer,
-  Flex,
-  Header,
-  List,
-  Loading,
-  Pagination,
-  Section,
-  Slider,
-  Title,
-  Wrapper,
-};
-
+export { default as Card } from './Card/';
+export { default as Footer } from './Footer';
+export { default as Header } from './Header';
+export { default as Loading } from './Loading';
+export { default as Pagination } from './Pagination';
+export { default as Section } from './Section';
+export { default as Slider } from './Slider';
+export { default as Title } from './Title';
+export { default as Wrapper } from './Wrapper';
+export { default as ErrorSpan } from './ErrorSpan';
+export { default as Row } from './Row';
+export { default as FormGroup } from './FormGroup';
+export { Button } from './Button';
+export { Container, Sidebar, Content } from './Container';
+export { Flex } from './Flex';
+export { List } from './List';

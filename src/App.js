@@ -9,6 +9,8 @@ import ProductDetail from './pages/ProductDetail';
 import { AppProvider } from './utils/context';
 import SearchResults from './pages/SearchResults';
 import ProductSearch from './components/product/ProductSearch';
+import ShoppingCart from './pages/ShoppingCart';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -32,7 +34,14 @@ function App() {
               <Route path="/search">
                 <SearchResults />
               </Route>
+              <Route path="/cart">
+                <ShoppingCart />
+              </Route>
+              <Route path="/checkout">
+                <Checkout />
+              </Route>
             </Switch>
+            
           </main>
           <Footer />
         </div>

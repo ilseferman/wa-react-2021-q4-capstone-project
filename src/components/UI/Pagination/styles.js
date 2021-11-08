@@ -4,7 +4,6 @@ const StyledPagination = styled.div`
   display: flex;
   justify-content: center;
   color: rgba(0, 0, 0, 0.8);
-  padding-bottom: 3rem;
 `;
 
 const Arrow = styled.div`

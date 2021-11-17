@@ -14,20 +14,21 @@ export function useLatestAPI() {
         setApiMetadata(INITIAL_API_METADATA);
 
         const response = await fetch(API_BASE_URL, {
-          signal: controller.signal,
+          signal: controller.signal
         });
         const { refs: [{ ref } = {}] = [] } = await response.json();
 
         setApiMetadata({ ref, isLoading: false });
       } catch (err) {
         setApiMetadata({ ref: null, isLoading: false });
-        console.error(err);
+        throw err;
       }
     }
 
     getAPIMetadata();
 
     return () => {
+      setApiMetadata(INITIAL_API_METADATA);
       controller.abort();
     };
   }, []);

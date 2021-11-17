@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+
 export const List = styled.div`
   padding-top: 1rem;
-  label {
+  button {
+    border: none;
     display: block;
     font-size: 14px;
     margin: 0 0 9px;

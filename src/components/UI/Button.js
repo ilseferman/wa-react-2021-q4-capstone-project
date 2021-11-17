@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const Button = styled.button`
   background-color: #3483fa;
   border-bottom: none;
@@ -19,8 +20,7 @@ export const Button = styled.button`
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease-in-out;
   }
-  &:disabled{
-  
+  &:disabled {
     background-color: #cccccc;
     color: #666666;
     &:hover {

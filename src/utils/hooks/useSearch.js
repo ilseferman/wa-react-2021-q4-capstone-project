@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { useLocation } from 'react-router-dom';
 import { useAPI } from './useAPI';
-import { useLocation } from 'react-router-dom'; 
-
 
 export function useSearch(searchTerm) {
   const location = useLocation();
@@ -10,23 +9,23 @@ export function useSearch(searchTerm) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const { 
-    data: productsData, 
-    isLoading: isLoadingProducts 
-  } = useAPI( 'product', { pageSize: 20, page, searchTerm });
-  
+  const { data: productsData, isLoading: isLoadingProducts } = useAPI(
+    'product',
+    { pageSize: 20, page, searchTerm }
+  );
+
   useEffect(() => {
-    if (!isLoadingProducts ) {
-      setTotalPages(+productsData?.total_pages);
+    if (!isLoadingProducts) {
+      setTotalPages(+productsData.total_pages ?? 0);
       setProducts(productsData?.results);
     }
   }, [isLoadingProducts, productsData, location]);
-  
+
   return {
     isLoadingProducts,
     page,
-    products,    
+    products,
     setPage,
-    totalPages,
+    totalPages
   };
 }

@@ -4,34 +4,39 @@ import { useLatestAPI } from './useLatestAPI';
 
 export function useAPI(
   documentType,
-  params = { pageSize: 10, page: null, documentTags: [], searchTerm: null }
+  params = {
+    pageSize: 10,
+    page: null,
+    documentTags: [],
+    searchTerm: null
+  }
 ) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
 
   const [responseData, setResponseData] = useState(() => ({
     data: {},
-    isLoading: true,
+    isLoading: true
   }));
 
-  let typeEncode = encodeURIComponent(
+  const typeEncode = encodeURIComponent(
     `[[at(document.type, "${documentType}")]]`
   );
 
-  let tagsEncode = encodeURIComponent(
+  const tagsEncode = encodeURIComponent(
     `[[at(document.tags, ${JSON.stringify(params.documentTags)})]]`
   );
-  let searchEncode = encodeURIComponent(
+  const searchEncode = encodeURIComponent(
     `[[fulltext(document, "{${params.searchTerm}}")]]`
   );
 
   const URL_SEARCH =
     documentType === 'product-detail'
       ? `&q=[[:d+=+at(document.id,+"${params.id}")+]]`
-      : `${documentType && '&q=' + typeEncode}` +
-        `${params.documentTags ? '&q=' + tagsEncode : ''}` +
-        `${params.searchTerm ? '&q=' + searchEncode : ''}` +
+      : `${documentType && `&q=${typeEncode}`}` +
+        `${params.documentTags ? `&q=${tagsEncode}` : ''}` +
+        `${params.searchTerm ? `&q=${searchEncode}` : ''}` +
         `&lang=en-us&pageSize=${params.pageSize}` +
-        `${params.page ? '&page=' + params.page : ''}`;
+        `${params.page ? `&page=${params.page}` : ''}`;
 
   useEffect(() => {
     if (!apiRef || isApiMetadataLoading) {
@@ -47,7 +52,7 @@ export function useAPI(
         const URL = `${API_BASE_URL}/documents/search?ref=${apiRef}${URL_SEARCH}`;
 
         const response = await fetch(URL, {
-          signal: controller.signal,
+          signal: controller.signal
         });
 
         const data = await response.json();
@@ -55,13 +60,17 @@ export function useAPI(
         setResponseData({ data, isLoading: false });
       } catch (err) {
         setResponseData({ data: {}, isLoading: false });
-        console.error(err);
+        throw err;
       }
     }
 
     callFetch();
 
     return () => {
+      setResponseData({
+        data: {},
+        isLoading: true
+      });
       controller.abort();
     };
   }, [apiRef, isApiMetadataLoading, URL_SEARCH]);

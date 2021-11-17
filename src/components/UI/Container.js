@@ -16,7 +16,7 @@ const Sidebar = styled.aside`
 
 const Content = styled.div`
   grid-column: 2;
-  
+
   @media (max-width: 768px) {
     grid-column: 1;
   }

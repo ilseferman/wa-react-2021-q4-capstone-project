@@ -8,7 +8,7 @@ export const slice = createSlice({
   initialState: {
     total: 0,
     totalAmount: 0,
-    products: [],
+    products: []
   },
   reducers: {
     addProduct: (state, action) => {
@@ -46,9 +46,9 @@ export const slice = createSlice({
     },
 
     removeProduct: (state, action) => {
-      state.products = state.products.filter((item) => {
-        return item.id !== action.payload.id;
-      });
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload.id
+      );
 
       // count total products added by amount on each product
       const total = getTotalAmount(state.products);
@@ -56,13 +56,17 @@ export const slice = createSlice({
     },
 
     getTotal: (state) => {
-      const total = Object.values(state.products).reduce((prev = 0, { price, amount }) => prev + (price * amount), 0);      
+      const total = Object.values(state.products).reduce(
+        (prev, { price, amount }) => (prev ?? 0) + price * amount,
+        0
+      );
       state.total = total;
-    },
-  },
+    }
+  }
 });
 
-export const { addProduct, removeProduct, updateProduct, getTotal } = slice.actions;
+export const { addProduct, removeProduct, updateProduct, getTotal } =
+  slice.actions;
 
 export const selectCart = (state) => state.cart.products;
 export const selectTotalAmount = (state) => state.cart.totalAmount;

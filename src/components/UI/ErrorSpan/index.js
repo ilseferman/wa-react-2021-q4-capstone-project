@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledError } from './styles';
 
-function ErrorSpan({ text }) {
-  return (
-    <StyledError>{text}</StyledError>
-  );
-}
+const ErrorSpan = function ({ text }) {
+  return <StyledError>{text}</StyledError>;
+};
+
+ErrorSpan.propTypes = {
+  text: PropTypes.string.isRequired
+};
 
 export default ErrorSpan;

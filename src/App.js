@@ -6,13 +6,13 @@ import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import styles from './App.module.css';
 import ProductDetail from './pages/ProductDetail';
-import { AppProvider } from './utils/context';
+import AppProvider from './utils/context';
 import SearchResults from './pages/SearchResults';
 import ProductSearch from './components/product/ProductSearch';
 import ShoppingCart from './pages/ShoppingCart';
 import Checkout from './pages/Checkout';
 
-function App() {
+const App = function App() {
   return (
     <AppProvider>
       <Router>
@@ -41,13 +41,12 @@ function App() {
                 <Checkout />
               </Route>
             </Switch>
-            
           </main>
           <Footer />
         </div>
       </Router>
     </AppProvider>
   );
-}
+};
 
 export default App;

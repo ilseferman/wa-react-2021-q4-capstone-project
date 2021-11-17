@@ -1,9 +1,14 @@
 import React from 'react';
-import ProductCard from './ProductCard';
-import { Section, Wrapper } from '../UI/';
 import PropTypes from 'prop-types';
+import ProductCard from './ProductCard';
+import { Section, Wrapper } from '../UI';
 
-function ProductsGrid({ items, cols = 4, title = "Products", desc = false }) {
+const ProductsGrid = function ({
+  items,
+  cols = 4,
+  title = 'Products',
+  desc = false
+}) {
   return (
     <Section title={title}>
       <Wrapper cols={cols}>
@@ -13,13 +18,19 @@ function ProductsGrid({ items, cols = 4, title = "Products", desc = false }) {
       </Wrapper>
     </Section>
   );
-}
+};
+
+ProductsGrid.defaultProps = {
+  cols: 4,
+  title: 'Products',
+  desc: false
+};
 
 ProductsGrid.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   cols: PropTypes.number,
   title: PropTypes.string,
-  desc: PropTypes.bool,
-}
+  desc: PropTypes.bool
+};
 
 export default ProductsGrid;

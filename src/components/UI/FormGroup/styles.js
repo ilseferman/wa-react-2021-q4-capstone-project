@@ -5,12 +5,12 @@ export const StyledFormGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   align-items: center;
-  
+
   width: 100%;
   margin: 5px auto;
 
-  
-  input, textarea {
+  input,
+  textarea {
     height: 2rem;
     border: 1px solid #dfdfdf;
     font-size: 1.1rem;
@@ -23,6 +23,4 @@ export const StyledFormGroup = styled.div`
       outline: none;
     }
   }
-
-  
 `;

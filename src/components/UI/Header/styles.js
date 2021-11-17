@@ -45,7 +45,7 @@ const Nav = styled.nav`
   button {
     all: unset;
     cursor: pointer;
-    width: 10%;    
+    width: 10%;
   }
 `;
 

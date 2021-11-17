@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledCard = styled.div`
+export const StyledCard = styled.div`
   color: #212529;
   background-color: #fff;
   margin: 1vw 1vw;
@@ -72,7 +72,6 @@ const StyledCard = styled.div`
     font-size: 10px;
     line-height: 1.2;
     padding: 4px 0px;
-    
   }
 
   input {
@@ -87,5 +86,3 @@ const StyledCard = styled.div`
     }
   }
 `;
-
-export { StyledCard };

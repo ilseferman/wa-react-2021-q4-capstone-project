@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { SliderList, DotsWrapper, SliderItem, Dot } from './styles';
 
-function Slider({ items, product = false, autoSlide = true }) {
+const Slider = function ({ items, product = false, autoSlide = true }) {
   const [activeSlider, setActiveSlider] = useState(0);
 
   // Effect to change slide automatically each 8 seconds
@@ -14,6 +15,7 @@ function Slider({ items, product = false, autoSlide = true }) {
       }, 8000);
       return () => clearInterval(id);
     }
+    return true;
   }, [activeSlider, items, autoSlide]);
 
   // Change the current image on the slider, depending on which dot clicked the user
@@ -27,7 +29,7 @@ function Slider({ items, product = false, autoSlide = true }) {
       <SliderList product={product}>
         {items?.map(({ id, data }) => (
           <SliderItem isActive={id === items[activeSlider].id} key={id}>
-            <img src={data.main_image.url} alt={data.main_image.alt} />
+            <img src={data?.main_image.url} alt={data.main_image.alt} />
           </SliderItem>
         ))}
       </SliderList>
@@ -39,10 +41,22 @@ function Slider({ items, product = false, autoSlide = true }) {
             onClick={() => handleDotClick(id)}
             isActive={id === items[activeSlider].id}
             key={id}
-          ></Dot>
+          />
         ))}
       </DotsWrapper>
     </>
   );
-}
+};
+
+Slider.defaultProps = {
+  product: false,
+  autoSlide: true
+};
+
+Slider.propTypes = {
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  product: PropTypes.bool,
+  autoSlide: PropTypes.bool
+};
+
 export default Slider;

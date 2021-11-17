@@ -1,29 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Button } from '../UI/';
 import PropTypes from 'prop-types';
+import { Card, Button } from '../UI';
 
-function ProductCard({ product, desc }) {
-  const { data } = product;
-  
+const ProductCard = function ({ product, desc }) {
+  const {
+    id,
+    data: {
+      // mainimage: { url, alt },
+      mainimage,
+      category,
+      price,
+      name,
+      short_description: shortDescription
+    }
+  } = product;
+
   return (
-    <Link to={`/product/${product.id}`}>
+    <Link to={`/product/${id}`}>
       <Card padding="1.4rem">
-        <img src={data.mainimage.url} alt={data.mainimage.alt} />
-        <span className="category">{data.category.slug}</span>
-        <p className="price">$ {data.price}</p>
-        <label className="label-left">{data.name}</label>
-        {desc && <p className="shortDesc">{data.short_description}</p>}
+        <img src={mainimage?.url} alt={mainimage?.alt} />
+        <span className="category">{category?.slug}</span>
+        <p className="price">${price}</p>
+        <label className="label-left">{name}</label>
+        {desc && <p className="shortDesc">{shortDescription}</p>}
         <Button>Add to cart </Button>
       </Card>
     </Link>
   );
-}
+};
 
 ProductCard.propTypes = {
-  product: PropTypes.object.isRequired,
-  desc: PropTypes.bool,
-}
+  product: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  desc: PropTypes.bool.isRequired
+};
 
 export default ProductCard;
-
